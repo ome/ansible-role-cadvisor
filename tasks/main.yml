@@ -1,0 +1,48 @@
+---
+# tasks file for cadvisor
+
+- name: cadvisor | create directories
+  become: yes
+  file:
+    path: "{{ item }}"
+    recurse: yes
+    state: directory
+  with_items:
+  - /opt/cadvisor
+
+- name: cadvisor | download
+  become: yes
+  get_url:
+    url: https://github.com/google/cadvisor/releases/download/v0.25.0/cadvisor
+    checksum: sha256:a3959bd1358698d3420b2a35d8194fceb16bd84dc28aa822b8c366e5540b9dbe
+    dest: /opt/cadvisor/cadvisor-0.25.0
+    force: no
+    mode: u=rwx,g=rx,o=rx
+
+- name: cadvisor | symlink
+  become: yes
+  file:
+    src: /opt/cadvisor/cadvisor-0.25.0
+    path: /opt/cadvisor/cadvisor
+    force: yes
+    state: link
+
+- name: cadvisor | server systemd service
+  become: yes
+  template:
+    dest: /etc/systemd/system/cadvisor.service
+    src: systemd-system-cadvisor-service.j2
+  notify:
+  - reload systemd
+  - restart cadvisor
+
+# Flush handlers to ensure systemd is reloaded
+- name: cadvisor | flush systemd handlers
+  meta: flush_handlers
+
+- name: cadvisor | enable and start server systemd
+  become: yes
+  service:
+    enabled: yes
+    name: cadvisor.service
+    state: started
