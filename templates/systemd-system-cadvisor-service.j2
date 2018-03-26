@@ -3,7 +3,7 @@ Description=Cadvisor Server
 
 [Service]
 #User=root
-ExecStart=/opt/cadvisor/cadvisor --port {{ cadvisor_port | default(9280) }}
+ExecStart=/opt/cadvisor/cadvisor --port {{ cadvisor_port }}
 
 [Install]
 WantedBy=multi-user.target

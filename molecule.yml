@@ -22,6 +22,8 @@ docker:
     image: centos/systemd
     image_version: latest
     privileged: True
+    volume_mounts:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
 verifier:
   name: testinfra
