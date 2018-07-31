@@ -13,16 +13,16 @@
 - name: cadvisor | download
   become: yes
   get_url:
-    url: https://github.com/manics/cadvisor/releases/download/v0.25.0-manics1/cadvisor
-    checksum: sha256:a3a11c85024a295c14ab3a066420475d66203c54fe40a852dac8f3a10cb43161
-    dest: /opt/cadvisor/cadvisor-0.25.0
+    url: "{{ cadvisor_url }}/{{ cadvisor_version }}/cadvisor"
+    checksum: "sha256:{{ cadvisor_checksum }}"
+    dest: "/opt/cadvisor/cadvisor-{{ cadvisor_version }}"
     force: no
     mode: u=rwx,g=rx,o=rx
 
 - name: cadvisor | symlink
   become: yes
   file:
-    src: /opt/cadvisor/cadvisor-0.25.0
+    src: "/opt/cadvisor/cadvisor-{{ cadvisor_version }}"
     path: /opt/cadvisor/cadvisor
     force: yes
     state: link
