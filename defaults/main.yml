@@ -1,8 +1,8 @@
 # Version
-cadvisor_version: v0.29.0
+cadvisor_version: v0.32.0
 
 # SHA256 checksum
-cadvisor_checksum: f5c8deb31eb12cae38007f0f4a208e0b9ba2b2ad6a1c9610b32d113221880d4e
+cadvisor_checksum: 62419c0e06edb55a9c02e68fcae3a81abac2a2d98122c36a9124259e0ca8916c
 
 # Listen port
 cadvisor_port: 9280
