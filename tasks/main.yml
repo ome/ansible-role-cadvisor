@@ -46,4 +46,3 @@
     enabled: yes
     name: cadvisor.service
     state: started
-

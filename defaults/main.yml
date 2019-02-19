@@ -15,4 +15,3 @@ cadvisor_download: "{{ cadvisor_url }}/{{ cadvisor_version }}/cadvisor"
 
 # Extra runtime options
 cadvisor_runtime_options: ""
-
