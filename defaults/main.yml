@@ -7,8 +7,12 @@ cadvisor_checksum: 62419c0e06edb55a9c02e68fcae3a81abac2a2d98122c36a9124259e0ca89
 # Listen port
 cadvisor_port: 9280
 
+# Base cadvisor url
+cadvisor_url: https://github.com/google/cadvisor/releases/download/
+
 # Download url
-cadvisor_url: https://github.com/google/cadvisor/releases/download/{{ cadvisor_version }}/cadvisor
+cadvisor_download: {{ cadvisor_url }}/{{ cadvisor_version }}/cadvisor
 
 # Extra runtime options
 cadvisor_runtime_options: ""
+
