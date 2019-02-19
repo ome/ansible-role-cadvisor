@@ -13,7 +13,7 @@
 - name: cadvisor | download
   become: yes
   get_url:
-    url: "{{ cadvisor_url }}/{{ cadvisor_version }}/cadvisor"
+    url: "{{ cadvisor_url }}"
     checksum: "sha256:{{ cadvisor_checksum }}"
     dest: "/opt/cadvisor/cadvisor-{{ cadvisor_version }}"
     force: no
