@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: cadvisor
   author: ome-devel@lists.openmicroscopy.org.uk
   description: cAdvisor container monitoring
   company: Open Microscopy Environment

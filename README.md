@@ -1,6 +1,9 @@
 cAdvisor
 ========
 
+[![Build Status](https://travis-ci.org/ome/ansible-role-cadvisor.svg)](https://travis-ci.org/ome/ansible-role-cadvisor)
+[![Ansible Role](https://img.shields.io/ansible/role/41043.svg)](https://galaxy.ansible.com/ome/cadvisor/)
+
 cAdvisor container monitoring.
 
 cAdvisor can be run in a [Docker container](https://github.com/google/cadvisor), however on RHEL/CentOS it requires [additional flags](https://github.com/google/cadvisor/blob/master/docs/running.md).
@@ -22,7 +25,7 @@ Example playbook
 ```yaml
 - hosts: localhost
   roles:
-    - role: cadvisor
+    - role: ome.cadvisor
 ```
 
 
