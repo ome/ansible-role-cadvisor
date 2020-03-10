@@ -2,47 +2,43 @@
 # tasks file for cadvisor
 
 - name: cadvisor | create directories
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
-    recurse: yes
+    recurse: true
     state: directory
   with_items:
-  - /opt/cadvisor
+    - /opt/cadvisor
 
 - name: cadvisor | download
-  become: yes
+  become: true
   get_url:
     url: "{{ cadvisor_download }}"
     checksum: "sha256:{{ cadvisor_checksum }}"
     dest: "/opt/cadvisor/cadvisor-{{ cadvisor_version }}"
-    force: no
+    force: false
     mode: u=rwx,g=rx,o=rx
 
 - name: cadvisor | symlink
-  become: yes
+  become: true
   file:
     src: "/opt/cadvisor/cadvisor-{{ cadvisor_version }}"
     path: /opt/cadvisor/cadvisor
-    force: yes
+    force: true
     state: link
 
 - name: cadvisor | server systemd service
-  become: yes
+  become: true
   template:
     dest: /etc/systemd/system/cadvisor.service
     src: systemd-system-cadvisor-service.j2
   notify:
-  - reload systemd
-  - restart cadvisor
-
-# Flush handlers to ensure systemd is reloaded
-- name: cadvisor | flush systemd handlers
-  meta: flush_handlers
+    - restart cadvisor
 
 - name: cadvisor | enable and start server systemd
-  become: yes
-  service:
-    enabled: yes
+  become: true
+  systemd:
+    enabled: true
     name: cadvisor.service
     state: started
+    daemon_reload: true
