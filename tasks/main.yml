@@ -5,8 +5,8 @@
   become: true
   file:
     path: "{{ item }}"
-    recurse: true
     state: directory
+    mode: 0755
   with_items:
     - /opt/cadvisor
 
@@ -32,6 +32,7 @@
   template:
     dest: /etc/systemd/system/cadvisor.service
     src: systemd-system-cadvisor-service.j2
+    mode: 0644
   notify:
     - restart cadvisor
 
