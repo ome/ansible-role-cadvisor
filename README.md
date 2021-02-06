@@ -1,7 +1,7 @@
 cAdvisor
 ========
 
-[![Build Status](https://travis-ci.org/ome/ansible-role-cadvisor.svg)](https://travis-ci.org/ome/ansible-role-cadvisor)
+[![Actions Status](https://github.com/ome/ansible-role-cadvisor/workflows/Molecule/badge.svg)](https://github.com/ome/ansible-role-cadvisor/actions)
 [![Ansible Role](https://img.shields.io/ansible/role/41399.svg)](https://galaxy.ansible.com/ome/cadvisor/)
 
 cAdvisor container monitoring.
