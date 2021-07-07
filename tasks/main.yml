@@ -10,14 +10,27 @@
   with_items:
     - /opt/cadvisor
 
-- name: cadvisor | download
-  become: true
-  get_url:
-    url: "{{ cadvisor_download }}"
-    checksum: "sha256:{{ cadvisor_checksum }}"
+- block:
+  - name: cadvisor | download
+    become: true
+    get_url:
+      url: "{{ cadvisor_download }}"
+      checksum: "sha256:{{ cadvisor_checksum }}"
+      dest: "/opt/cadvisor/cadvisor-{{ cadvisor_version }}"
+      force: false
+      mode: u=rwx,g=rx,o=rx
+  when: cadvisor_binary_local_dir | length == 0
+
+- name: cadvisor | propagate locally distributed cadvisor binary
+  copy:
+    src: "{{ cadvisor_binary_local_dir }}/cadvisor-{{ cadvisor_version }}"
     dest: "/opt/cadvisor/cadvisor-{{ cadvisor_version }}"
-    force: false
-    mode: u=rwx,g=rx,o=rx
+    mode: 0755
+    owner: root
+    group: root
+  when: cadvisor_binary_local_dir | length > 0
+  notify:
+    - restart cadvisor
 
 - name: cadvisor | symlink
   become: true
