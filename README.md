@@ -16,6 +16,7 @@ Variables
 Optional:
 - `cadvisor_port`: Listen on this port, default `9280`
 - `cadvisor_version`: Cadvisor version, default `v0.29.0`
+- `cadvisor_binary_local_dir`: Cadvisor binary file directory when running without connection to external, default `""`
 - `cadvisor_checksum`: SHA256 checksum, default `f5c8deb31eb12cae38007f0f4a208e0b9ba2b2ad6a1c9610b32d113221880d4eP`
 
 
