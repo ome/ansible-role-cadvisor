@@ -19,7 +19,7 @@
         dest: "/opt/cadvisor/cadvisor-{{ cadvisor_version }}"
         force: false
         mode: u=rwx,g=rx,o=rx
-    when: cadvisor_binary_local_dir | length == 0
+  when: cadvisor_binary_local_dir | length == 0
 
 - name: cadvisor | propagate locally distributed cadvisor binary
   copy:
