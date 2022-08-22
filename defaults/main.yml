@@ -3,7 +3,8 @@
 cadvisor_version: v0.45.0
 
 # CPU Architecture
-cadvisor_cpu_arch: "linux-amd64"
+# Empty string "" for all versions < v0.45.0
+cadvisor_binary_suffix: "-{{ cadvisor_version }}-linux-amd64"
 
 # Cadvisor source path if offline
 cadvisor_binary_local_dir: ""
@@ -19,9 +20,8 @@ cadvisor_port: 9280
 cadvisor_url: https://github.com/google/cadvisor/releases/download/
 
 # Download url
-cadvisor_download_no_arch: "{{ cadvisor_url }}/{{ cadvisor_version }}/cadvisor"
-cadvisor_download_multi_arch: "{{ cadvisor_url }}/{{ cadvisor_version }}/cadvisor-{{ cadvisor_version }}-{{ cadvisor_cpu_arch }}"
-cadvisor_download: "{{ lookup('vars', 'cadvisor_download_no_arch') if (cadvisor_cpu_arch | length == 0) else lookup('vars','cadvisor_download_multi_arch') }}"
+cadvisor_download: "{{ cadvisor_url }}/{{ cadvisor_version }}/cadvisor\
+  {{ cadvisor_binary_suffix }}"
 
 # Extra runtime options
 cadvisor_runtime_options: ""
