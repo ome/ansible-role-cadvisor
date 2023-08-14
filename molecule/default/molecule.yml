@@ -3,8 +3,10 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+    yamllint .
+    ansible-lint
+    flake8
 platforms:
   - name: cadvisor
     image: centos/systemd:latest
@@ -21,5 +23,3 @@ scenario:
   name: default
 verifier:
   name: testinfra
-  lint:
-    name: flake8
