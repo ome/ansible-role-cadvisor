@@ -7,3 +7,8 @@
     name: cadvisor
     state: restarted
     daemon_reload: true
+
+- name: reload systemd units
+  become: true
+  systemd:
+    daemon_reload: true

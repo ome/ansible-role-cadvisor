@@ -47,6 +47,7 @@
     mode: 0644
   notify:
     - restart cadvisor
+    - reload systemd units
 
 - name: cadvisor | enable and start server systemd
   become: true
@@ -54,4 +55,3 @@
     enabled: true
     name: cadvisor.service
     state: started
-    daemon_reload: true
