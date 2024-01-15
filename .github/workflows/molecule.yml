@@ -49,8 +49,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: galaxy
-        uses: robertdebock/galaxy-action@1.2.1
+        uses: ansible-actions/ansible-galaxy-action@v1.2.0
         with:
           galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
-          git_branch: ${{  github.ref_name }}
+          galaxy_version: ${{  github.ref_name }}
 
