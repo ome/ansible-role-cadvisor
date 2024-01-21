@@ -9,6 +9,6 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-        - 7
+        - 9
   namespace: ome
   galaxy_tags: []

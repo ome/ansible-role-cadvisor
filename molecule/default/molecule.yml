@@ -9,14 +9,20 @@ lint: |
     flake8
 platforms:
   - name: cadvisor
-    image: centos/systemd:latest
+    image: eniocarboni/docker-rockylinux-systemd:9
+    image_version: latest
     command: /sbin/init
     privileged: true
+    cgroupns_mode: host
+    groups:
+      - extra_options
     volumes:
       # cadvisor needs the cgroup mount to access metrics
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup
+      - /sys/fs/cgroup/cpu,cpuacct:/sys/fs/cgroup/cpuacct,cpu
+
 provisioner:
-  name: ansible
+  namefs/fs/cgroupcgroup: ansible
   lint:
     name: ansible-lint
 scenario:
