@@ -5,7 +5,7 @@ galaxy_info:
   description: cAdvisor container monitoring
   company: Open Microscopy Environment
   license: BSD
-  min_ansible_version: 2.2
+  min_ansible_version: 2.10
   platforms:
     - name: EL
       versions:
