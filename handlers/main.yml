@@ -3,7 +3,7 @@
 
 - name: restart cadvisor
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: cadvisor
     state: restarted
     daemon_reload: true
