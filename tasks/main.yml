@@ -47,14 +47,6 @@
   notify:
     - restart cadvisor
 
-- name: test_task
-  ansible.builtin.shell: "if ! systemctl is-active cadvisor.service; then  echo 'inactive' ; fi"
-  register: service_active
-  failed_when: False
-  changed_when: False
-
-- debug: var=service_active
-
 - name: cadvisor | enable server systemd
   become: true
   ansible.builtin.systemd:
