@@ -22,7 +22,7 @@ platforms:
       - /sys/fs/cgroup/cpu,cpuacct:/sys/fs/cgroup/cpuacct,cpu
 
 provisioner:
-  namefs/fs/cgroupcgroup: ansible
+  name: ansible
   lint:
     name: ansible-lint
 scenario:
